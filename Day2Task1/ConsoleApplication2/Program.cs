@@ -7,7 +7,7 @@ using Day2Task1;
 using Day2Task2;
 
 
-namespace ConsoleApplication2
+namespace Runner
 {
     class Program
     {
@@ -20,13 +20,12 @@ namespace ConsoleApplication2
 
             Console.WriteLine(c.ConvertNumToP(39, 2));
             Console.ReadLine();
-            Console.WriteLine(cc.NODCalc(1000, 1071, 462,21,555));
-               Console.ReadLine();
-           // Console.WriteLine(cc.GCD(1071,462));
-           // Console.ReadLine();
-           // Console.WriteLine(cc.GCD(1071,462,21));  
-          
-           // Console.ReadLine();
+            Console.WriteLine(cc.NODCalc(1000, 1071, 462));
+            Console.ReadLine();
+            Console.WriteLine(cc.GCD(1000, 1071,462));
+            Console.ReadLine();
+            Console.WriteLine(cc.GCD(1000,1071,462,462,42));  
+            Console.ReadLine();
 
 
         }

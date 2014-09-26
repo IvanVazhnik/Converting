@@ -4,23 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Day2Task1
 {
     public class Converter
-    {
-
-
+    {        
         public string ConvertNumToP(int number, int p)
         {
-            string result = ConvertToP(number, p);
-            
-            return result;
+            InputValueCheck check = new InputValueCheck();
+            if (check.PValueCheck(p))
+            {
+                return ConvertToP(number, p);
+            }else
+
+            return "Incorrect p input ";
         }
 
         private static string ConvertToP(int number, int p)
         {
-
-
             string result = "";
             while (number > 0.1)
             {
@@ -57,15 +58,12 @@ namespace Day2Task1
                             break;
                     }
                 }
-
                 number = number / p;
             }
-
             string output = new string(result.ToCharArray().Reverse().ToArray());
             
             return output;
-        }
-        
+        }      
 
     }
 }

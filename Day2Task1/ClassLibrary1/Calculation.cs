@@ -10,54 +10,42 @@ namespace Day2Task2
 {
     public class Calculation
     {
-        
-                
-        public int NODCalc(int time,params int[] numbers)
-        {
-
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-
-            int result = Calc(numbers[0], numbers[1]);
+        Stopwatch sw = new Stopwatch();
                       
-            sw.Stop();
-            TimeSpan ts = sw.Elapsed;
-            Thread.Sleep(time-ts.Milliseconds);
-
-            return result;
-            
-
-        }
-
-        
-        
-        private static int Calc(int a, int b)
+        public int NODCalc(int time, int a, int b)
         {
+            sw.Start();
+            if (a == 0) return b;
+            if (b == 0) return a;
+            if (a == b) return a;
             while (b != 0)
             {
                 b = a % (a = b);
             }
-            return a;
+            sw.Stop();
+            TimeSpan ts = sw.Elapsed;
+            Thread.Sleep(time - ts.Milliseconds);
 
+            return a;                 
         }
 
-        private static int Calc(params int[] numbers)
+        public int NODCalc(int time,params int[] numbers)
         {
-
+           
             int a = numbers[0];
             for (int i = 0; i < numbers.Length-1; i++)
             {
-                a = Calc(a, i+1);
-                
+                a = NODCalc(a, numbers[i + 1]);                
             }
+          
 
             return a;
         }
 
 
-        public int GCD(int a, int b)
+        public int GCD(int time,int a, int b)
         {
-
+            sw.Start();
             if (a == 0) return b;
             if (b == 0) return a;
             if (a == b) return a;
@@ -65,26 +53,25 @@ namespace Day2Task2
             if ((a % 2 == 0) && (b % 2 == 0)) return 2 * GCD(a / 2, b / 2);
             if ((a % 2 == 0) && (b % 2 != 0)) return GCD(a / 2, b);
             if ((a % 2 != 0) && (b % 2 == 0)) return GCD(a, b / 2);
+            sw.Stop();
+            TimeSpan ts = sw.Elapsed;
+            Thread.Sleep(time - ts.Milliseconds);
+
             return GCD(b,Math.Abs(a - b));
-
-
         }
 
-        public int GCD(params int[] numbers)
+        public int GCD(int time,params int[] numbers)
         {
-            int a = 0;
+           
+            int a = numbers[0];
             for (int i = 0; i < numbers.Length - 1; i++)
             {
-                a = GCD(i, i + 1);
-
+                a = GCD(a, numbers[i + 1]);
             }
+          
 
             return a;
-
-
         }
-
-
-
+                
     }
 }
